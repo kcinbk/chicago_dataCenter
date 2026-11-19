@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b63a3cfce12097a786d2ee74dfe5f8a9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+      .maplegend {
+        position: absolute;
+        z-index:9999;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10px;
+        font: 12px/14px Arial, Helvetica, sans-serif;
+        right: 10px;
+        bottom: 20px;
+      }
+      .maplegend .legend-title {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+      .maplegend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 0px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        }
+      .maplegend .legend-scale ul li {
+        list-style: none;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 2px;
+        }
+      .maplegend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 14px;
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 0px solid #ccc;
+        }
+      .maplegend .legend-source {
+        color: #777;
+        clear: both;
+        }
+      .maplegend a {
+        color: #777;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    
+    <div id='maplegend project_phase' class='maplegend'>
+        <div class='legend-title'>project_phase</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:red'></span>Operating</li>
+                <li><span style='background:green'></span>Proposed</li>
+                <li><span style='background:green'></span>Development</li>
+                <li><span style='background:blue'></span>suspended</li>
+                <li><span style='background:blue'></span>Cancelled</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_b63a3cfce12097a786d2ee74dfe5f8a9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b63a3cfce12097a786d2ee74dfe5f8a9 = L.map(
+                "map_b63a3cfce12097a786d2ee74dfe5f8a9",
+                {
+                    center: [41.8781, -87.6298],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_817709e0de739ce3777251252d9320aa = L.tileLayer(
+                "https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png?key=cb1_3t1q_1_0960046504f90cb9125e4501",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors \u00a9 CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_817709e0de739ce3777251252d9320aa.addTo(map_b63a3cfce12097a786d2ee74dfe5f8a9);
+        
+    
+        function geo_json_3223761288e790d52ee08c99d0d54257_styler(feature) {
+            switch(feature.id) {
+                case "347": case "366": case "368": case "370": case "371": case "375": case "376": 
+                    return {"color": "green", "fillColor": "green", "fillOpacity": 0.5, "radius": 5.0, "weight": 2};
+                case "348": 
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "radius": 5.0, "weight": 2};
+                case "349": case "356": 
+                    return {"color": "blue", "fillColor": "blue", "fillOpacity": 0.5, "radius": 13.0, "weight": 2};
+                case "350": case "374": 
+                    return {"color": "blue", "fillColor": "blue", "fillOpacity": 0.5, "radius": 5.0, "weight": 2};
+                case "351": case "352": case "358": case "359": case "360": case "361": case "362": case "365": case "378": case "381": 
+                    return {"color": "green", "fillColor": "green", "fillOpacity": 0.5, "radius": 13.0, "weight": 2};
+                case "363": case "364": case "377": 
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "radius": 13.0, "weight": 2};
+                case "391": case "392": case "398": case "401": case "402": case "416": 
+                    return {"color": "green", "fillColor": "green", "fillOpacity": 0.5, "radius": 7.666666666666666, "weight": 2};
+                default:
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "radius": 7.666666666666666, "weight": 2};
+            }
+        }
+        function geo_json_3223761288e790d52ee08c99d0d54257_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_3223761288e790d52ee08c99d0d54257_pointToLayer(feature, latlng) {
+            var opts = {
+  "stroke": true,
+  "color": "#3388ff",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3388ff",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 2,
+};
+            
+            let style = geo_json_3223761288e790d52ee08c99d0d54257_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_3223761288e790d52ee08c99d0d54257_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_3223761288e790d52ee08c99d0d54257.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_3223761288e790d52ee08c99d0d54257_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_3223761288e790d52ee08c99d0d54257 = L.geoJson(null, {
+                onEachFeature: geo_json_3223761288e790d52ee08c99d0d54257_onEachFeature,
+            
+                style: geo_json_3223761288e790d52ee08c99d0d54257_styler,
+                pointToLayer: geo_json_3223761288e790d52ee08c99d0d54257_pointToLayer,
+            ...{
+  "opacity": 0.5,
+}
+        });
+
+        function geo_json_3223761288e790d52ee08c99d0d54257_add (data) {
+            geo_json_3223761288e790d52ee08c99d0d54257
+                .addData(data);
+        }
+            geo_json_3223761288e790d52ee08c99d0d54257_add({"bbox": [-88.2417, 41.2564, -87.2737, 42.3132], "features": [{"bbox": [-88.24102, 41.80707, -88.24102, 41.80707], "geometry": {"coordinates": [-88.24102, 41.80707], "type": "Point"}, "id": "347", "properties": {"__folium_color": "green", "aware_factor": 0.395, "capacity_class": "Large (51-99 MW)", "city": "aurora", "county": "dupage", "date_added_to_inventory": "2025-11-26", "date_last_updated_in_inventory": "2025-11-26", "drought_hazard": "Very Low", "facility_id": "dc_a6957f21dfb4", "facility_name": "Edged Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Low", "latitude": 41.80707, "longitude": -88.24102, "moratorium_tracker_count": 0, "mw_mid": 72.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Development", "radius": 5.0, "reported_expected_online_year": 2027.0, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.21706, 41.77224, -88.21706, 41.77224], "geometry": {"coordinates": [-88.21706, 41.77224], "type": "Point"}, "id": "348", "properties": {"__folium_color": "red", "aware_factor": 0.395, "capacity_class": "Small (0-10 MW)", "city": "aurora", "county": "dupage", "date_added_to_inventory": "2026-03-04", "date_last_updated_in_inventory": "2026-04-27", "drought_hazard": "Very Low", "facility_id": "dc_b671b5c0cf25", "facility_name": "US Signal Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Low", "latitude": 41.77224, "longitude": -88.21706, "moratorium_tracker_count": 0, "mw_mid": 3.675, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Operating", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.2281, 42.1029, -88.2281, 42.1029], "geometry": {"coordinates": [-88.2281, 42.1029], "type": "Point"}, "id": "349", "properties": {"__folium_color": "blue", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "barrington hills", "county": "cook", "date_added_to_inventory": "2026-02-16", "date_last_updated_in_inventory": "2026-02-26", "drought_hazard": "Very Low", "facility_id": "dc_5eb3af49168e", "facility_name": "Barrington Hills Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.1029, "longitude": -88.2281, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "Direct facility record", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Cancelled", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.2417, 41.2564, -88.2417, 41.2564], "geometry": {"coordinates": [-88.2417, 41.2564], "type": "Point"}, "id": "350", "properties": {"__folium_color": "blue", "aware_factor": 0.403, "capacity_class": "Unknown", "city": "braidwood/ braceville", "county": "will", "date_added_to_inventory": "2026-01-26", "date_last_updated_in_inventory": "2026-01-26", "drought_hazard": "Very Low", "facility_id": "dc_f6bd3ebfe7b4", "facility_name": "Western Hospitality Partners Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Moderate", "latitude": 41.2564, "longitude": -88.2417, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Suspended", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.63554, 41.87995, -87.63554, 41.87995], "geometry": {"coordinates": [-87.63554, 41.87995], "type": "Point"}, "id": "351", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "chicago", "county": "cook", "date_added_to_inventory": "2026-08-10", "date_last_updated_in_inventory": "2026-08-10", "drought_hazard": "Very Low", "facility_id": "dc_56f713d45ec3", "facility_name": "300 West Adams Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 41.87995, "longitude": -87.63554, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.6257, 41.84624, -87.6257, 41.84624], "geometry": {"coordinates": [-87.6257, 41.84624], "type": "Point"}, "id": "352", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Medium (11-50 MW)", "city": "chicago", "county": "cook", "date_added_to_inventory": "2025-09-17", "date_last_updated_in_inventory": "2026-02-11", "drought_hazard": "Very Low", "facility_id": "dc_ea8d4bc50a07", "facility_name": "HydraVault Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 41.84624, "longitude": -87.6257, "moratorium_tracker_count": 0, "mw_mid": 20.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Development", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.19533, 42.07725, -88.19533, 42.07725], "geometry": {"coordinates": [-88.19533, 42.07725], "type": "Point"}, "id": "356", "properties": {"__folium_color": "blue", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "dundee", "county": "cook", "date_added_to_inventory": "2026-07-06", "date_last_updated_in_inventory": "2026-07-06", "drought_hazard": "Very Low", "facility_id": "dc_d706f4b291c2", "facility_name": "Karis Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.07725, "longitude": -88.19533, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "Direct facility record", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Cancelled", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9827, 42.03674, -87.9827, 42.03674], "geometry": {"coordinates": [-87.9827, 42.03674], "type": "Point"}, "id": "358", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2025-06-19", "drought_hazard": "Very Low", "facility_id": "dc_9899ff15ecc4", "facility_name": "Aligned", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.03674, "longitude": -87.9827, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9766, 42.03573, -87.9766, 42.03573], "geometry": {"coordinates": [-87.9766, 42.03573], "type": "Point"}, "id": "359", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2025-06-19", "drought_hazard": "Very Low", "facility_id": "dc_319223101dac", "facility_name": "Aligned", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.03573, "longitude": -87.9766, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9824, 42.03374, -87.9824, 42.03374], "geometry": {"coordinates": [-87.9824, 42.03374], "type": "Point"}, "id": "360", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2025-06-19", "drought_hazard": "Very Low", "facility_id": "dc_a0e9d1553057", "facility_name": "Aligned", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.03374, "longitude": -87.9824, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.0317, 42.01142, -88.0317, 42.01142], "geometry": {"coordinates": [-88.0317, 42.01142], "type": "Point"}, "id": "361", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2025-06-19", "drought_hazard": "Very Low", "facility_id": "dc_c71eee0f97fb", "facility_name": "Nexstar Media Group Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.01142, "longitude": -88.0317, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.95375, 42.01401, -87.95375, 42.01401], "geometry": {"coordinates": [-87.95375, 42.01401], "type": "Point"}, "id": "362", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2025-06-19", "drought_hazard": "Very Low", "facility_id": "dc_d8269de9e903", "facility_name": "Stream Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.01401, "longitude": -87.95375, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9518, 42.00269, -87.9518, 42.00269], "geometry": {"coordinates": [-87.9518, 42.00269], "type": "Point"}, "id": "363", "properties": {"__folium_color": "red", "aware_factor": 0.316, "capacity_class": "Medium (11-50 MW)", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2026-03-11", "drought_hazard": "Very Low", "facility_id": "dc_365a59ba4c18", "facility_name": "Stream Data Center: Chicago 1", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.00269, "longitude": -87.9518, "moratorium_tracker_count": 0, "mw_mid": 15.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Operating", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9578, 41.99923, -87.9578, 41.99923], "geometry": {"coordinates": [-87.9578, 41.99923], "type": "Point"}, "id": "364", "properties": {"__folium_color": "red", "aware_factor": 0.316, "capacity_class": "Medium (11-50 MW)", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2026-03-11", "drought_hazard": "Very Low", "facility_id": "dc_db5e728b23d2", "facility_name": "Stream Data Center: Chicago 2", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 41.99923, "longitude": -87.9578, "moratorium_tracker_count": 0, "mw_mid": 32.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Operating", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9757, 42.02308, -87.9757, 42.02308], "geometry": {"coordinates": [-87.9757, 42.02308], "type": "Point"}, "id": "365", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Medium (11-50 MW)", "city": "elk grove village", "county": "cook", "date_added_to_inventory": "2025-05-27", "date_last_updated_in_inventory": "2026-03-11", "drought_hazard": "Very Low", "facility_id": "dc_b1b30c355fb9", "facility_name": "T5 Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 42.02308, "longitude": -87.9757, "moratorium_tracker_count": 0, "mw_mid": 36.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Development", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.04308, 42.3132, -88.04308, 42.3132], "geometry": {"coordinates": [-88.04308, 42.3132], "type": "Point"}, "id": "366", "properties": {"__folium_color": "green", "aware_factor": 0.421, "capacity_class": "Hyperscale (100-999 MW)", "city": "grayslake", "county": "lake", "date_added_to_inventory": "2026-09-10", "date_last_updated_in_inventory": "2026-09-10", "drought_hazard": "Very Low", "facility_id": "dc_e735db44762c", "facility_name": "T5 Grayslake Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Moderate", "latitude": 42.3132, "longitude": -88.04308, "moratorium_tracker_count": 0, "mw_mid": 480.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Development", "radius": 5.0, "reported_expected_online_year": 2027.0, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.06284, 41.46522, -88.06284, 41.46522], "geometry": {"coordinates": [-88.06284, 41.46522], "type": "Point"}, "id": "368", "properties": {"__folium_color": "green", "aware_factor": 0.403, "capacity_class": "Mega campus (1,000+ MW)", "city": "jackson twp/ joliet", "county": "will", "date_added_to_inventory": "2026-03-13", "date_last_updated_in_inventory": "2026-07-25", "drought_hazard": "Very Low", "facility_id": "dc_39b673177ce3", "facility_name": "Joliet Technology Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Moderate", "latitude": 41.46522, "longitude": -88.06284, "moratorium_tracker_count": 0, "mw_mid": 1800.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Development", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.06276, 41.80169, -88.06276, 41.80169], "geometry": {"coordinates": [-88.06276, 41.80169], "type": "Point"}, "id": "370", "properties": {"__folium_color": "green", "aware_factor": 0.395, "capacity_class": "Medium (11-50 MW)", "city": "lisle", "county": "dupage", "date_added_to_inventory": "2026-01-23", "date_last_updated_in_inventory": "2026-01-23", "drought_hazard": "Very Low", "facility_id": "dc_4c3e5de63199", "facility_name": "Cloud Centers Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Low", "latitude": 41.80169, "longitude": -88.06276, "moratorium_tracker_count": 0, "mw_mid": 50.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Proposed", "radius": 5.0, "reported_expected_online_year": 2027.0, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.0291, 41.84915, -88.0291, 41.84915], "geometry": {"coordinates": [-88.0291, 41.84915], "type": "Point"}, "id": "371", "properties": {"__folium_color": "green", "aware_factor": 0.395, "capacity_class": "Medium (11-50 MW)", "city": "lombard", "county": "dupage", "date_added_to_inventory": "2025-05-27", "date_last_updated_in_inventory": "2026-03-24", "drought_hazard": "Very Low", "facility_id": "dc_b7426621b586", "facility_name": "CyrusOne Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Low", "latitude": 41.84915, "longitude": -88.0291, "moratorium_tracker_count": 0, "mw_mid": 18.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Development", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.1191, 41.81113, -88.1191, 41.81113], "geometry": {"coordinates": [-88.1191, 41.81113], "type": "Point"}, "id": "374", "properties": {"__folium_color": "blue", "aware_factor": 0.395, "capacity_class": "Medium (11-50 MW)", "city": "naperville", "county": "dupage", "date_added_to_inventory": "2025-09-03", "date_last_updated_in_inventory": "2026-02-13", "drought_hazard": "Very Low", "facility_id": "dc_eae483548bf0", "facility_name": "Karis Critical Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Low", "latitude": 41.81113, "longitude": -88.1191, "moratorium_tracker_count": 0, "mw_mid": 36.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Cancelled", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-88.15195, 41.8113, -88.15195, 41.8113], "geometry": {"coordinates": [-88.15195, 41.8113], "type": "Point"}, "id": "375", "properties": {"__folium_color": "green", "aware_factor": 0.395, "capacity_class": "Unknown", "city": "naperville", "county": "dupage", "date_added_to_inventory": "2026-06-23", "date_last_updated_in_inventory": "2026-06-23", "drought_hazard": "Very Low", "facility_id": "dc_da2eec922611", "facility_name": "Karis Data Center", "hazard_rating": 2, "heat_wave_hazard": "Relatively Low", "latitude": 41.8113, "longitude": -88.15195, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Proposed", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.969, 41.51055, -87.969, 41.51055], "geometry": {"coordinates": [-87.969, 41.51055], "type": "Point"}, "id": "376", "properties": {"__folium_color": "green", "aware_factor": 0.403, "capacity_class": "Hyperscale (100-999 MW)", "city": "new lenox", "county": "will", "date_added_to_inventory": "2025-06-24", "date_last_updated_in_inventory": "2025-06-24", "drought_hazard": "Very Low", "facility_id": "dc_e38714e67188", "facility_name": "Cielo Digital Infrastructure", "hazard_rating": 2, "heat_wave_hazard": "Relatively Moderate", "latitude": 41.51055, "longitude": -87.969, "moratorium_tracker_count": 0, "mw_mid": 350.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Low", "power_source": "Unknown", "project_phase": "Proposed", "radius": 5.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively Low", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9177, 41.91402, -87.9177, 41.91402], "geometry": {"coordinates": [-87.9177, 41.91402], "type": "Point"}, "id": "377", "properties": {"__folium_color": "red", "aware_factor": 0.316, "capacity_class": "Medium (11-50 MW)", "city": "northlake", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2026-03-24", "drought_hazard": "Very Low", "facility_id": "dc_80ab289217f3", "facility_name": "ORD-01 Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 41.91402, "longitude": -87.9177, "moratorium_tracker_count": 0, "mw_mid": 42.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Operating", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.9172, 41.91273, -87.9172, 41.91273], "geometry": {"coordinates": [-87.9172, 41.91273], "type": "Point"}, "id": "378", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "northlake", "county": "cook", "date_added_to_inventory": "2025-06-19", "date_last_updated_in_inventory": "2026-03-24", "drought_hazard": "Very Low", "facility_id": "dc_e52a82991f6b", "facility_name": "ORD-02 Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 41.91273, "longitude": -87.9172, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Unknown", "project_phase": "Development", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.70105, 41.64986, -87.70105, 41.64986], "geometry": {"coordinates": [-87.70105, 41.64986], "type": "Point"}, "id": "381", "properties": {"__folium_color": "green", "aware_factor": 0.316, "capacity_class": "Unknown", "city": "robbins", "county": "cook", "date_added_to_inventory": "2026-06-24", "date_last_updated_in_inventory": "2026-06-24", "drought_hazard": "Very Low", "facility_id": "dc_e56bb52f66d3", "facility_name": "Robbins Incinerator Data Center", "hazard_rating": 5, "heat_wave_hazard": "Very High", "latitude": 41.64986, "longitude": -87.70105, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Very High", "power_source": "Natural gas", "project_phase": "Proposed", "radius": 13.0, "reported_expected_online_year": null, "riverine_flood_hazard": "Very High", "state": "il", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.83, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.3099, 41.43521, -87.3099, 41.43521], "geometry": {"coordinates": [-87.3099, 41.43521], "type": "Point"}, "id": "391", "properties": {"__folium_color": "green", "aware_factor": 0.389, "capacity_class": "Unknown", "city": "crown point", "county": "lake", "date_added_to_inventory": "2025-09-03", "date_last_updated_in_inventory": "2025-09-03", "drought_hazard": "No Rating", "facility_id": "dc_d5afe83dda4b", "facility_name": "Karis Critical Data Center", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.43521, "longitude": -87.3099, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Proposed", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.3319, 41.44693, -87.3319, 41.44693], "geometry": {"coordinates": [-87.3319, 41.44693], "type": "Point"}, "id": "392", "properties": {"__folium_color": "green", "aware_factor": 0.389, "capacity_class": "Unknown", "city": "crown point", "county": "lake", "date_added_to_inventory": "2025-09-03", "date_last_updated_in_inventory": "2025-09-03", "drought_hazard": "No Rating", "facility_id": "dc_f00aa5047b8e", "facility_name": "Wylie Capital Data Center", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.44693, "longitude": -87.3319, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Proposed", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.5191, 41.70514, -87.5191, 41.70514], "geometry": {"coordinates": [-87.5191, 41.70514], "type": "Point"}, "id": "398", "properties": {"__folium_color": "green", "aware_factor": 0.389, "capacity_class": "Hyperscale (100-999 MW)", "city": "hammond", "county": "lake", "date_added_to_inventory": "2025-06-14", "date_last_updated_in_inventory": "2025-06-14", "drought_hazard": "No Rating", "facility_id": "dc_fedf83d893fd", "facility_name": "CoreWeave", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.70514, "longitude": -87.5191, "moratorium_tracker_count": 0, "mw_mid": 180.0, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Proposed", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.5205, 41.70743, -87.5205, 41.70743], "geometry": {"coordinates": [-87.5205, 41.70743], "type": "Point"}, "id": "399", "properties": {"__folium_color": "red", "aware_factor": 0.389, "capacity_class": "Unknown", "city": "hammond", "county": "lake", "date_added_to_inventory": "2025-05-27", "date_last_updated_in_inventory": "2026-03-24", "drought_hazard": "No Rating", "facility_id": "dc_62c91b77a855", "facility_name": "Digital Crossroad Data Center", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.70743, "longitude": -87.5205, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Operating", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.2737, 41.28743, -87.2737, 41.28743], "geometry": {"coordinates": [-87.2737, 41.28743], "type": "Point"}, "id": "401", "properties": {"__folium_color": "green", "aware_factor": 0.389, "capacity_class": "Hyperscale (100-999 MW)", "city": "hebron", "county": "lake", "date_added_to_inventory": "2026-05-12", "date_last_updated_in_inventory": "2026-05-12", "drought_hazard": "No Rating", "facility_id": "dc_7bbfbb4e31cc", "facility_name": "Sentinel Data Center: Project Shirley", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.28743, "longitude": -87.2737, "moratorium_tracker_count": 0, "mw_mid": 500.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Proposed", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.28408, 41.50489, -87.28408, 41.50489], "geometry": {"coordinates": [-87.28408, 41.50489], "type": "Point"}, "id": "402", "properties": {"__folium_color": "green", "aware_factor": 0.389, "capacity_class": "Mega campus (1,000+ MW)", "city": "hobart", "county": "lake", "date_added_to_inventory": "2025-05-26", "date_last_updated_in_inventory": "2026-03-24", "drought_hazard": "No Rating", "facility_id": "dc_077485e78d8f", "facility_name": "Hobart Data Center", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.50489, "longitude": -87.28408, "moratorium_tracker_count": 0, "mw_mid": 2400.0, "opposition_evidence": "Direct facility record", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Development", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}, {"bbox": [-87.3033, 41.45333, -87.3033, 41.45333], "geometry": {"coordinates": [-87.3033, 41.45333], "type": "Point"}, "id": "416", "properties": {"__folium_color": "green", "aware_factor": 0.389, "capacity_class": "Unknown", "city": "merrillville", "county": "lake", "date_added_to_inventory": "2025-09-03", "date_last_updated_in_inventory": "2025-09-03", "drought_hazard": "No Rating", "facility_id": "dc_efb5882d46eb", "facility_name": "Province Group Data Center", "hazard_rating": 3, "heat_wave_hazard": "Relatively High", "latitude": 41.45333, "longitude": -87.3033, "moratorium_tracker_count": 0, "mw_mid": null, "opposition_evidence": "County tracker context only", "overall_hazard": "Relatively Moderate", "power_source": "Unknown", "project_phase": "Proposed", "radius": 7.666666666666666, "reported_expected_online_year": null, "riverine_flood_hazard": "Relatively High", "state": "in", "state_incentive": 1, "state_industrial_price_2024_cents_kwh": 8.15, "water_scarcity": "Under 0.5", "wildfire_hazard": "Very Low"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_3223761288e790d52ee08c99d0d54257.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["facility_name", "city", "county", "state", "reported_expected_online_year", "capacity_class", "water_scarcity", "overall_hazard"];
+    let aliases = ["facility_name", "city", "county", "state", "reported_expected_online_year", "capacity_class", "water_scarcity", "overall_hazard"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_3223761288e790d52ee08c99d0d54257.addTo(map_b63a3cfce12097a786d2ee74dfe5f8a9);
+        
+    
+            tile_layer_817709e0de739ce3777251252d9320aa.addTo(map_b63a3cfce12097a786d2ee74dfe5f8a9);
+        
+    
+            geo_json_3223761288e790d52ee08c99d0d54257.addTo(map_b63a3cfce12097a786d2ee74dfe5f8a9);
+        
+</script>
+</html>
